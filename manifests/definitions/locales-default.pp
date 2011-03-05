@@ -10,6 +10,7 @@ define locales::default() {
   exec { "update-locale" :
     command => "update-locale ${name}",
     require => Exec["locale-gen"],
+    subscribe => File['/etc/locale.gen'],
     refreshonly => true,
   }
 }
